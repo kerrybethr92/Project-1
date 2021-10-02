@@ -1,18 +1,33 @@
-// const arr = ['yesterday', 'hey, jude', `octopus's garden`]
+
+let searchType = ''
+let searchWord = ''
+
+
+
 $(() => {
-    $.ajax({
-        url:`https://pokeapi.co/api/v2/${searchType}/${searchWord}`
-    }).then(
-        (data) => {
 
-            // console.log(arr);
-            // console.log(arr[1]);
-            console.log(data);
-            console.log(data.name);
-
-        },
-        () => {
-            console.log('bad request');
+    $('input[type="submit"]').on('click', (event) => {
+        event.preventDefault();
+        searchType = $(event.currentTarget).val()
+        if ($('input[type="text"]').val()) {
+            searchWord = $('input[type="text"]').val();
+        } else {
+            alert("Please enter a name or type to search.")
         }
-    )
+        // console.log(searchType + searchWord);
+    })
+
+    // $.ajax({
+    //     url:`https://pokeapi.co/api/v2/${searchType}/${searchWord}`
+    // }).then(
+    //     (data) => {
+    //
+    //         console.log(data);
+    //         console.log(data.name);
+    //
+    //     },
+    //     () => {
+    //         console.log('bad request');
+    //     }
+    // )
 })
