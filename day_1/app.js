@@ -2,7 +2,51 @@
 let searchType = ''
 let searchWord = ''
 
+const getAbilities = (arr) => {
+    const abilitiesArray = []
+    for (let i = 0; i < arr.length; i++) {
+        abilitiesArray.push(arr[i].ability.name)
+    }
+    return abilitiesArray;
+}
 
+const searchByName = (data) => {
+    const result = {
+        name: data.name,
+        pic: data.sprites.front_default,
+        type: data.types[0].type.name, //what if it has more than one type?
+        abilities: getAbilities(data.abilities)
+    }
+    // console.log(result.abilities);
+    // console.log(result);
+    const $searchResultDiv = $('<div>').addClass('card')
+    $searchResultDiv.append($('<h3>').text(result.name))
+    $searchResultDiv.append($('<img>').attr('src', result.pic)) // add alt text here
+    $searchResultDiv.append($('<h4>').text(`type: ${result.type}`))
+    const $abilitiesUl = $('<ul>').text('abilities')
+    $searchResultDiv.append($abilitiesUl)
+    for (let a = 0; a < result.abilities.length; a++) {
+        const $abilitiesLi = $('<li>').text(result.abilities[a])
+        $abilitiesUl.append($abilitiesLi)
+    }
+    $('.search-results').append($searchResultDiv)
+}
+
+const searchByType = (data) => {
+    const resultsByType = data.pokemon;
+    for (let p = 0; p < resultsByType.length; p++) {
+        $.ajax({
+            url: resultsByType[p].pokemon.url;
+        }).then(
+            (data) => {
+                searchByName(data)
+            },
+            () => {
+                console.log('bad request');
+            }
+        )
+    }
+}
 
 $(() => {
 
@@ -17,17 +61,29 @@ $(() => {
         }
         // console.log(searchType + searchWord);
         // $(event.target).trigger('reset')
-        $.ajax({
-            url:`https://pokeapi.co/api/v2/${searchType}/${searchWord}`
-        }).then(
-            (data) => {
-                console.log(data);
-                console.log(data.name);
-            },
-            () => {
-                console.log('bad request');
-            }
-        )
+        if (searchType === 'name') {
+            $.ajax({
+                url:`https://pokeapi.co/api/v2/pokemon/${searchWord}`
+            }).then(
+                (data) => {
+                    searchByName(data)
+                },
+                () => {
+                    console.log('bad request');
+                }
+            )
+        } else if (searchType === 'type') {
+            $.ajax({
+                url:`https://pokeapi.co/api/v2/${searchType}/${searchWord}`
+            }).then(
+                (data) => {
+                    searchByType(data);
+                },
+                () => {
+                    console.log('bad request');
+                }
+            )
+        }
     })
 
 
