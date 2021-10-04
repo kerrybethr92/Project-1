@@ -1,6 +1,7 @@
 
 let searchType = ''
 let searchWord = ''
+let sizeOfTeam = 0
 
 const getAbilities = (arr) => {
     const abilitiesArray = []
@@ -30,16 +31,22 @@ const searchByName = (data) => {
         $abilitiesUl.append($abilitiesLi)
     }
     $('.search-results').append($searchResultDiv)
+    // console.log(sizeOfTeam);
     $('.card').on('click', (e) => {
-        const $teamMember = $(e.currentTarget)
-        $('.myTeam').append($teamMember)
-        $teamMember.toggleClass('addToTeam')
-        $teamMember.toggleClass('removeFromTeam')
+        const $choice = $(e.currentTarget)
+        // const $teamMember = $('<div>').append($choice)
+        $('.myTeam').append($choice)
+        sizeOfTeam++
+        $choice.toggleClass('addToTeam')
+        $choice.toggleClass('removeFromTeam')
+        console.log(sizeOfTeam);
         $('.removeFromTeam').on('click', (ev) => {
             $(ev.currentTarget).remove()
         })
     })
+
 }
+
 
 const searchByType = (data) => {
     const resultsByType = data.pokemon;
@@ -55,6 +62,31 @@ const searchByType = (data) => {
             }
         )
     }
+}
+
+const carouselForward = (event) => {
+
+    $('.myTeam').children().eq(currentPokemonIndex).css('display', 'none');
+
+    if (currentPokemonIndex < sizeOfTeam) {
+        currentPokemonIndex++
+    } else {
+        currentPokemonIndex = 0
+    }
+    $('.myTeam').children().eq(currentPokemonIndex).css('display', 'flex')
+}
+
+const carouselBackward = (event) => {
+    let currentPokemonIndex = 0;
+    let sizeOfTeam = $('.myTeam').children().length - 1
+    $('.myTeam').children().eq(currentPokemonIndex).css('display', 'none');
+
+    if (currentPokemonIndex > 0) {
+        currentPokemonIndex--
+    } else {
+        currentPokemonIndex = sizeOfTeam
+    }
+    $('.myTeam').children().eq(currentPokemonIndex).css('display', 'flex')
 }
 
 $(() => {
@@ -95,6 +127,17 @@ $(() => {
             )
         }
     })
+
+    // let currentPokemonIndex = 0;
+
+
+    // $('.next').on('click', (event) => {
+    //     carouselForward(event)
+    // })
+    //
+    // $('.previous').on('click', (event) => {
+    //     carouselBackward(event)
+    // })
 
 
 })
