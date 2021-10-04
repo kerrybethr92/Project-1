@@ -18,16 +18,28 @@ header img {
 
 form {
     width: 100vw;
+    display: flex;
+    justify-content: center;
 }
 
 .search-results {
     width: 45vw;
+    display: flex;
+    flex-wrap: wrap;
+
 }
 
-.myTeam {
+.team-div {
     width: 45vw;
+    display: flex;
+
 }
 
 .card {
     background-color: yellow;
+    width: 24vw;
+}
+
+.removeFromTeam {
+    
 }

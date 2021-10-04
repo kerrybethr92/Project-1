@@ -19,7 +19,7 @@ const searchByName = (data) => {
     }
     // console.log(result.abilities);
     // console.log(result);
-    const $searchResultDiv = $('<div>').addClass('card')
+    const $searchResultDiv = $('<div>').addClass('card').addClass('addToTeam')
     $searchResultDiv.append($('<h3>').text(result.name))
     $searchResultDiv.append($('<img>').attr('src', result.pic)) // add alt text here
     $searchResultDiv.append($('<h4>').text(`type: ${result.type}`))
@@ -33,7 +33,9 @@ const searchByName = (data) => {
     $('.card').on('click', (e) => {
         const $teamMember = $(e.currentTarget)
         $('.myTeam').append($teamMember)
-        $teamMember.on('click', (ev) => {
+        $teamMember.toggleClass('addToTeam')
+        $teamMember.toggleClass('removeFromTeam')
+        $('.removeFromTeam').on('click', (ev) => {
             $(ev.currentTarget).remove()
         })
     })
