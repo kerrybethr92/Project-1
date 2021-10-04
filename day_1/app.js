@@ -30,6 +30,13 @@ const searchByName = (data) => {
         $abilitiesUl.append($abilitiesLi)
     }
     $('.search-results').append($searchResultDiv)
+    $('.card').on('click', (e) => {
+        const $teamMember = $(e.currentTarget)
+        $('.myTeam').append($teamMember)
+        $teamMember.on('click', (ev) => {
+            $(ev.currentTarget).remove()
+        })
+    })
 }
 
 const searchByType = (data) => {
