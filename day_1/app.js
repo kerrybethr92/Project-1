@@ -36,7 +36,7 @@ const searchByType = (data) => {
     const resultsByType = data.pokemon;
     for (let p = 0; p < resultsByType.length; p++) {
         $.ajax({
-            url: resultsByType[p].pokemon.url;
+            url: resultsByType[p].pokemon.url
         }).then(
             (data) => {
                 searchByName(data)
@@ -52,6 +52,7 @@ $(() => {
 
     $('input[type="submit"]').on('click', (event) => { // revisit w03d02 DOM INPUT to see if this form can be better
         event.preventDefault();
+        $('.search-results').empty()
         searchType = $(event.currentTarget).val();
         // console.log(searchType);
         if ($('input[type="text"]').val()) {
