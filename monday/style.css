@@ -4,13 +4,19 @@
 }
 
 body {
+    background-image: radial-gradient(#C4C0D1, #0B2370);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 header {
     text-align: center;
     width: 100vw;
+    height: 75px;
+
 }
 header img {
     width: 90px;
@@ -26,69 +32,81 @@ form {
     width: 45vw;
     display: flex;
     flex-direction: column;
+    background: white;
+    border: 1px solid black;
+    border-radius: 14px;
+}
 
+.div1 h2 {
+    text-align: center;
 }
 
 .search-results {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-evenly;
+    row-gap: 8px;
 }
 
-.search-results .card{
+/* .search-results .card{
     margin: 3px 2px;
-}
-
-
+} */
 
 .card {
-    background-color: yellow;
+    background-color: #F3D147;
     width: 20vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 3px;
-
+    border-radius: 8px;
 }
 
 li {
     list-style: none;
 }
 
-.removeFromTeam {
-
-}
 .team-div h2 {
     width: inherit;
+    text-align: center;
 }
 .team-div {
     width: 45vw;
-    background-color: gray;
+    background-color: #DD4F40;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
     min-height: 242px;
-    max-height: 242px;
+    max-height: 250px;
+    border: 1px solid black;
+    border-radius: 14px;
 }
 
 .myTeam div {
     display: none;
 }
 .myTeam div:first-of-type{
-    background-color: yellow;
+    background-color: #F3D147;
     width: 20vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 3px;
-    display: block;
-} 
+    /* display: block; */
+    border-radius: 8px;
+}
 
 .button {
     width: 50px;
     height: 196px;
-    background: skyblue;
+    display: flex;
+    align-items: center;
+}
+
+.button img {
+    width: 50px;
 }
 
 .previous {
