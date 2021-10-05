@@ -1,4 +1,7 @@
 $(() => {
+    let sizeOfTeam = -1;
+    let currentIndex = 0;
+
     const makeACard = (data) => {
         const cardProperties = {
             name: data.name,
@@ -6,13 +9,14 @@ $(() => {
             type: data.types[0].type.name,
             abilities: getAbilities(data.abilities)
         }
+        // console.log(cardProperties.abilities);
         const $card = $('<div>').addClass('card')
         $card.append($('<h3>').text(cardProperties.name))
         $card.append($('<h4>').text(cardProperties.type))
         $card.append($('<img>').attr('src', cardProperties.pic))
         const $abilitiesUL = $('<ul>').text('ABILITIES')
         $card.append($abilitiesUL)
-        for (let a = 0; a < cardProperties.abilities; a++) {
+        for (let a = 0; a < cardProperties.abilities.length; a++) {
             $abilitiesUL.append($('<li>').text(cardProperties.abilities[a]))
         }
         const $newButton = $('<button>').text('Add to My Team').addClass('addToTeam')
@@ -21,10 +25,14 @@ $(() => {
 
 
         $newButton.on('click', (event) => {
+            sizeOfTeam++
+            console.log(sizeOfTeam);
             const $newTeamMember = $('<div>')
             $newTeamMember.append($(event.target).parent())
             $('.myTeam').append($newTeamMember)
             // $('.myTeam').append($(event.target).parent())
+
+            $(event.target).remove();
         })
     }
 
@@ -75,6 +83,27 @@ $(() => {
             })
         }
 
+    })
+    // let sizeOfTeam = $('myTeam').children().length - 1;
+    // console.log(sizeOfTeam);
+    $('.next').on('click', () => {
+        $('.myTeam').children().eq(currentIndex).css('display', 'none')
+        if (currentIndex < sizeOfTeam) {
+            currentIndex++
+        } else {
+            currentIndex = 0
+        }
+        $('.myTeam').children().eq(currentIndex).css('display', 'flex')
+    })
+
+    $('.previous').on('click', () => {
+        $('.myTeam').children().eq(currentIndex).css('display', 'none')
+        if (currentIndex > 0) {
+            currentIndex--
+        } else {
+            currentIndex = sizeOfTeam
+        }
+        $('.myTeam').children().eq(currentIndex).css('display', 'flex')
     })
 })
 
