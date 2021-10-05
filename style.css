@@ -72,7 +72,7 @@ li {
     max-height: 242px;
 }
 
-.myTeam div {
+/* .myTeam div {
     display: none;
 }
 .myTeam div:first-of-type{
@@ -83,7 +83,7 @@ li {
     align-items: center;
     padding: 3px;
     display: block;
-}
+} */
 
 .button {
     width: 50px;
