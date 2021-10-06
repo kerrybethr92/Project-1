@@ -11,3 +11,6 @@ If the submit "type" is selected, the program goes to the API page with a list o
 This information is then processed and the relevant pieces of data are stored in a div (class="card"), which are added to the div "search-results".
 
 When the user clicks the button on the "card" div, the card is moved over to the carousel div "myTeam" where the user can navigate left and right through the items they've selected.
+
+ ## Challenges ##
+ I struggled with using local storage and was ultimately unable to do so.
