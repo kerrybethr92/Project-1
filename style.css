@@ -20,6 +20,8 @@ header {
 
 h1 {
     padding: 20px;
+    color: #F3D147;
+    text-shadow: 2px 2px 5px black;
 }
 header img {
     width: 90px;
@@ -32,6 +34,10 @@ form {
     padding-bottom: 15px;
 }
 
+input[type="text"] {
+    padding: 3px;
+}
+
 .div1 {
     width: 45vw;
     display: flex;
@@ -39,6 +45,8 @@ form {
     background: white;
     border: 1px solid black;
     border-radius: 14px;
+    flex-grow: 2;
+    margin: 7px;
 }
 
 .div1 h2 {
@@ -78,6 +86,7 @@ li {
 }
 .team-div {
     width: 45vw;
+    max-width: 370px;
     background-color: #DD4F40;
     display: flex;
     flex-direction: row;
@@ -87,6 +96,7 @@ li {
     max-height: 250px;
     border: 1px solid black;
     border-radius: 14px;
+    margin: 7px;
 }
 
 .myTeam div {
@@ -109,6 +119,7 @@ li {
     height: 196px;
     display: flex;
     align-items: center;
+    padding: 0 12px;
 }
 
 .button img {

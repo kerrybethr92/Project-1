@@ -1,5 +1,7 @@
 pokemon team readme
 
+the functioning site can be found at: https://kind-kepler-b13560.netlify.app/
+
 After confirming the API I chose had the information I needed, I made a page with a form for the user to enter the information they want to search for and divs to display the search results and the selected pokemon.
 
 When the user clicks either name or type, the program retrieves data from the API by substituting the value entered by the user and the value of the submit.
