@@ -86,7 +86,7 @@ $(() => {
     })
     // let sizeOfTeam = $('myTeam').children().length - 1;
     // console.log(sizeOfTeam);
-    $('.next').on('click', () => {
+    $('#next').on('click', () => {
         $('.myTeam').children().eq(currentIndex).css('display', 'none')
         if (currentIndex < sizeOfTeam) {
             currentIndex++
@@ -96,7 +96,7 @@ $(() => {
         $('.myTeam').children().eq(currentIndex).css('display', 'flex')
     })
 
-    $('.previous').on('click', () => {
+    $('#previous').on('click', () => {
         $('.myTeam').children().eq(currentIndex).css('display', 'none')
         if (currentIndex > 0) {
             currentIndex--
